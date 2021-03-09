@@ -6,7 +6,15 @@ import re
 import sqlite3
 
 def fetchincidents(url):
-    data = urllib.request.urlopen(url).read()
+
+   #url = ("https://www.normanok.gov/sites/default/files/documents/"
+      # "2021-02/2021-02-21_daily_incident_summary.pdf")
+
+    headers = {}
+    headers['User-Agent'] = "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.27 Safari/537.17"                          
+
+    data = urllib.request.urlopen(urllib.request.Request(url, headers=headers)).read()                                                                               
+    #data = urllib.request.urlopen(url).read()
     fp = tempfile.TemporaryFile()
     fp.write(data)
     return fp
@@ -36,7 +44,7 @@ def extractincidents(fp):
 
 
 def createdb():
-    dbname = 'normanpolice.db'
+    dbname = 'normanpd.db'
     database = sqlite3.connect(dbname)
     db = database.cursor()
     db.execute(" DROP TABLE IF EXISTS incidents")

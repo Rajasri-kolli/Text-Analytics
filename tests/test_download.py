@@ -1,6 +1,8 @@
-
+import argparse
+import project0
 from project0 import project0
 import sqlite3
+import pytest
 
 url = "https://www.normanok.gov/sites/default/files/documents/2021-02/2021-02-02_daily_incident_summary.pdf"
 
@@ -13,10 +15,10 @@ def test_extractincidents():
       temp_file = project0.fetchincidents(url)
       result = project0.extractincidents(temp_file)
       for i in result:
-            assert len(i) >1
+            assert len(i) > 1
 
 def test_createdb():
-      assert project0.createdb() == 'norman.db'
+      assert project0.createdb() == 'normanpd.db'
 
 
 def test_populatedb( ):

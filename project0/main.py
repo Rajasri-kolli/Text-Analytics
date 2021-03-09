@@ -1,15 +1,16 @@
 
 # Example main.py
 import argparse
-from project0 import project0
+import project0
+#from project0 import project0
 
 
 def main(url):
     # Download data
-    data = project0.fetchincidents(url)
+    incident_data = project0.fetchincidents(url)
 
     # Extract Data
-    incidents = project0.extractincidents(data)
+    incidents = project0.extractincidents(incident_data)
 
     # Create Database
     db = project0.createdb()
