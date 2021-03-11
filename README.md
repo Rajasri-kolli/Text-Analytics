@@ -65,6 +65,6 @@ Test cases are written for all the five functions. For the purpose of testing a 
 
 These files need to be added, commited and then pushed into git. The following code is followed:
 
-git add file-name
-git commit -m "Message to be displayed in git"
+git add file-name;
+git commit -m "Message to be displayed in git";
 git push origin master
