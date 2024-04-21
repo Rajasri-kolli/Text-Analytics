@@ -28,29 +28,30 @@ To extract the data from the pdf files, use the PyPdf2.PdfFileReader class. It w
 
 ## Here is an example python script 
 
-import tempfile
-
+import tempfile:
 fp = tempfile.TemporaryFile()
-Write the pdf data to a temp file
 
+Write the pdf data to a temp file:
 fp.write(data.read())
-Set the curser of the file back to the begining
 
+Set the curser of the file back to the begining:
 fp.seek(0)
 
-Read the PDF
+Read the PDF:
 pdfReader = PdfFileReader(fp)
 pdfReader.getNumPages()
 
-Get the first page
+Get the first page:
 page1 = pdfReader.getPage(0).extractText()
 
- This function can return a list of rows so another function can easily insert the data into a database. In this prooject we are only considering the first page of any pdf.
+*This function can return a list of rows so another function can easily insert the data into a database. In this prooject we are only considering the first page of any pdf.*
 
 Create Database:
 The createdb() function creates an SQLite database file named normanpd.db and inserts a table with the schema below.
+
 Insert Data:
 The function populatedb(db, incidents) function takes the rows created in the extractincidents() function and adds it to the normanpd.db database. Again, the signature of this function can be changed as needed.
+
 Status Print:
 The status() function prints to standard out, a random row from the database. 
 
